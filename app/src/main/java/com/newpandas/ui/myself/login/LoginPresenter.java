@@ -7,6 +7,8 @@ import com.newpandas.model.entity.LoginBean;
 import com.newpandas.model.entity.NickNameBean;
 import com.newpandas.net.callback.NetCallBack;
 import com.newpandas.net.callback.NetWorkCallBack;
+import com.newpandas.uitls.MyLogs;
+import com.newpandas.widget.manager.SharedPreferencesManager;
 
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -75,6 +77,8 @@ public class LoginPresenter implements LoginContract.presenter{
         loginModel.getNickNameBean(params, headers, new NetWorkCallBack<NickNameBean>() {
             @Override
             public void onSuccess(NickNameBean nickNameBean) {
+                SharedPreferencesManager.saveUserInfor(nickNameBean.getContent().getNickname(),"");
+                MyLogs.d("SSS","--------------"+nickNameBean.getContent().getNickname());
                 loginview.toSuccess();
             }
 

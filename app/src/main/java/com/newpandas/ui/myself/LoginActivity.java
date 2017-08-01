@@ -12,6 +12,7 @@ import com.newpandas.R;
 import com.newpandas.base.BaseActivity;
 import com.newpandas.ui.myself.login.LoginContract;
 import com.newpandas.ui.myself.login.LoginPresenter;
+import com.newpandas.widget.manager.JCPlayVideo;
 import com.newpandas.widget.manager.ToastManager;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.UMAuthListener;
@@ -76,6 +77,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
             case R.id.login_weixin:
+                JCPlayVideo.startFullscreen(this,JCPlayVideo.class,"http://video.jiecao.fm/11/23/xin/%E5%81%87%E4%BA%BA.mp4","温大少");
                 break;
             case R.id.login_qq:
 //                UMImage image = new UMImage(this, R.mipmap.ic_launcher);//资源文件
@@ -188,7 +190,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
 
     @Override
     public void toSuccess() {
-
+        startActivity(new Intent(this,PersonalActivity.class));
+        finish();
     }
 
 

@@ -12,17 +12,13 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.newpandas.R;
 import com.newpandas.base.BaseFragment;
 import com.newpandas.config.ImageLoaders;
-import com.newpandas.model.entity.CultureVideo;
 import com.newpandas.model.entity.PandaCulture;
 import com.newpandas.uitls.MyLogs;
-import com.newpandas.uitls.acache.ACacheUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import butterknife.BindView;
 
@@ -41,7 +37,6 @@ public class PandaCultureFragment extends BaseFragment implements PandaCultureCo
     private PandaCultureAdapter cultureAdapter;
     private TextView pandaCultureCarouselTitle;
     private Banner banner;
-    private int pos;
 
     @Override
     protected int getLayoutId() {
@@ -70,19 +65,6 @@ public class PandaCultureFragment extends BaseFragment implements PandaCultureCo
         cultureXrecyclerview.addHeaderView(view);
         banner = (Banner) view.findViewById(R.id.pandaculture_banner);
         pandaCultureCarouselTitle = (TextView) view.findViewById(R.id.pandaculture_carousel_title);
-        cultureAdapter.setClickListener(new PandaCultureAdapter.onClickListener() {
-            @Override
-            public void onItemClickListener(int position) {
-                pos = position-4;
-                if(dataList.get(pos).getType().equals("2")){
-                    Intent intent=new Intent(getActivity(),PandaCultureVideoActivity.class);
-                    intent.putExtra("videoId",dataList.get(pos).getId());
-                    startActivity(intent);
-                }else{
-                    presenter.getCultureVideo(dataList.get(pos).getId());
-                }
-            }
-        });
     }
 
     @Override
@@ -114,20 +96,9 @@ public class PandaCultureFragment extends BaseFragment implements PandaCultureCo
 
             @Override
             public void onLoadMore() {
-
             }
         });
-    }
 
-    @Override
-    public void setVideoInfo(CultureVideo videoInfo) {
-        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String date = format.format(new Date());
-        ACacheUtils.getUtils().setStorage(dataList.get(pos).getImage(),
-                dataList.get(pos).getVideoLength(),dataList.get(pos).getTitle(),
-                date,videoInfo.getVideo().getChapters().get(0).getUrl(),
-                videoInfo.getVideo().getLowChapters().get(0).getUrl());
-//        videoInfo.getVideo().getChapters().get(0).getUrl();
     }
 
     @Override

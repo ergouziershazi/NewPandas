@@ -55,4 +55,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.2.0'
     compile project(':ummodule')
     compile project(':PushSDK')
+    compile project(':jcvideoplayer-lib')
 }

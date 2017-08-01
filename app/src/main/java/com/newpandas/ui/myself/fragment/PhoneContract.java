@@ -10,11 +10,14 @@ import com.newpandas.base.BaseView;
  */
 
 public interface PhoneContract {
-    interface View extends BaseView<EmailContract.Presenter> {
+    interface View extends BaseView<Presenter> {
         void showImgCode(Bitmap bitmap);
+        void showPhoneCode();
+        void toSuccess();
     }
 
     interface Presenter extends BasePresenter {
-
+        void loadPhoneCode(String phoneNumber,String imgCode);
+        void phoneRegister(String phoneNumber,String pwd,String phoneCode);
     }
 }

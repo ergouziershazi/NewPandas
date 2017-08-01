@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.newpandas.app.App;
 
 import butterknife.ButterKnife;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 public abstract class BaseActivity extends AppCompatActivity {
 // 记录上一个显示的fragment
@@ -33,5 +34,19 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JCVideoPlayer.releaseAllVideos();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (JCVideoPlayer.backPress()) {
+            return;
+        }
+        super.onBackPressed();
     }
 }

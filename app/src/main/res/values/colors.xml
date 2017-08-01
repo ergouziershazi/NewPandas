@@ -9,4 +9,7 @@
     <color name="red">#ff0000</color>
     <color name="split">#e8e8e8</color>
     <color name="gray">#E6EBEF</color>
+
+    <color name="colorBlue">#438ded</color>
+    <color name="barbackground">#66000000</color>
 </resources>

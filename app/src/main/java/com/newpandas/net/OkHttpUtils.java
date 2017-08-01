@@ -10,6 +10,7 @@ import com.newpandas.app.App;
 import com.newpandas.config.Keys;
 import com.newpandas.net.callback.NetCallBack;
 import com.newpandas.net.callback.NetWorkCallBack;
+import com.newpandas.net.callback.PhoneNetCallBack;
 
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
@@ -34,6 +35,7 @@ import static com.newpandas.config.Keys.JSESSIONID;
 public class OkHttpUtils implements IHttp{
     private OkHttpClient okHttpClient;
     private String s;
+    private String json;
 
     //构造函数私有化
    public OkHttpUtils(){
@@ -260,6 +262,52 @@ public class OkHttpUtils implements IHttp{
            }
        });
 
+    }
+
+    @Override
+    public <T> void phonepost(String url, Map<String, String> params,Map<String, String> headers,final PhoneNetCallBack callback) {
+        FormBody.Builder body=new FormBody.Builder();
+        if(params!=null&&params.size()>0){
+            Set<String> keys=params.keySet();
+            for(String key:keys){
+                String value=params.get(key);
+                body.add(key,value);
+            }
+        }
+        Request.Builder builder = new Request.Builder();
+        if(headers!=null&&headers.size()>0){
+            Set<String> keys=headers.keySet();
+            for(String key:keys){
+                String value=headers.get(key);
+                builder.addHeader(key,value);
+            }
+        }
+        Request request = builder.url(url).post(body.build()).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+                App.context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //执行在主线程
+                        callback.onError(404,e.getMessage().toString());
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                json = response.body().string();
+                App.context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //执行在主线程
+                        callback.onSuccess(json);
+                    }
+                });
+            }
+        });
     }
 
     @Override

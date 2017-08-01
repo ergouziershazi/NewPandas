@@ -23,6 +23,7 @@ public class Urls {
     public static final String IMGCODE = "http://reg.cntv.cn/simple/verificationCode.action";
     //邮箱注册
     public static final String EMAILREGISTER = "https://reg.cntv.cn/api/register.action";
+
     //熊猫文化
     public static final String PANDACULTURE=BASEURL+"xmwh/index.json";
 
@@ -42,8 +43,10 @@ public class Urls {
 
     //获取昵称
     public static String GETNiCkNAME="http://my.cntv.cn/intf/napi/api.php";
-    //视频集 播放
-    public static final String VIDEOSET="http://api.cntv.cn/video/videolistById";
-    //版本更新
-    public static final String VERSION="http://115.182.9.124/index.php?action=release-GetNewVersions&applyName=1426217325";
+
+    //手机号验证码注册
+    public static String PHONEYANZHENG = "http://reg.cntv.cn/regist/getVerifiCode.action";
+
+    //手机号注册
+    public static String PHONEREGISTER="https://reg.cntv.cn/regist/mobileRegist.do";
 }
