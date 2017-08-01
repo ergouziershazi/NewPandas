@@ -54,6 +54,7 @@ public class TabPageFragment extends BaseFragment implements LiveChinaContract.V
 
     @Override
     public void setInfoResult(LiveInfo liveInfo) {
+        liveList.clear();
         liveList.addAll(liveInfo.getLive());
         tabPageInfoAdapter.notifyDataSetChanged();
         livechinaInfoXrecyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {

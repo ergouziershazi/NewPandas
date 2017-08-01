@@ -42,4 +42,8 @@ public class Urls {
 
     //获取昵称
     public static String GETNiCkNAME="http://my.cntv.cn/intf/napi/api.php";
+    //视频集 播放
+    public static final String VIDEOSET="http://api.cntv.cn/video/videolistById";
+    //版本更新
+    public static final String VERSION="http://115.182.9.124/index.php?action=release-GetNewVersions&applyName=1426217325";
 }

@@ -2,6 +2,7 @@ package com.newpandas.ui.pandaculture;
 
 import com.newpandas.model.biz.PandaCulturModel;
 import com.newpandas.model.biz.PandaCultureImp;
+import com.newpandas.model.entity.CultureVideo;
 import com.newpandas.model.entity.PandaCulture;
 import com.newpandas.net.callback.NetWorkCallBack;
 
@@ -33,5 +34,22 @@ public class PandaCulturePresenter implements PandaCultureContract.Presenter {
                 view.showMessage(errorMsg);
             }
         });
+    }
+
+    @Override
+    public void getCultureVideo(String id) {
+        pandaCulturModel.getCultureVideoInfo(id, new NetWorkCallBack<CultureVideo>() {
+            @Override
+            public void onSuccess(CultureVideo cultureVideo) {
+                view.setVideoInfo(cultureVideo);
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+
+            }
+        });
+
+
     }
 }
