@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical"
+        android:layout_width="120dp"
+        android:layout_height="80dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <ImageView
+                android:id="@+id/multiple_item_iamge"
+                android:scaleType="fitXY"
+                android:layout_width="120dp"
+                android:layout_height="60dp" />
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/lpanda_bottom_gra"
+                android:orientation="horizontal"
+                android:layout_width="60dp"
+                android:layout_height="18dp">
+
+                <ImageView
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/lpanda_live_layer"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/white"
+                    android:text="Live"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/multiple_item_title"
+            android:text="成都基地高清精切线路"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textandiconmargin"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

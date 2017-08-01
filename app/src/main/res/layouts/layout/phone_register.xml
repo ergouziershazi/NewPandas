@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="海外用户暂不支持手机号注册，您可以使用邮箱注册"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/phone_edit_phonenumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="账号：请输入手机账号"
+            android:padding="8dp"
+            android:textSize="16sp"
+            android:background="@drawable/edit_bg"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@null" />
+
+
+    <TextView
+        android:id="@+id/phone_check_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/red" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        >
+
+        <EditText
+            android:id="@+id/phone_edit_imgcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/forget_imgcode"
+            android:background="@drawable/edit_bg"
+            android:hint="@string/forget_img_yanzhengma_hint"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:textColor="@color/gray"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/phone_imgcode"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/forget_image_yanzhengma" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:id="@+id/phone_check_imgcode"
+        android:layout_marginLeft="20dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal"
+        >
+
+        <EditText
+            android:id="@+id/phone_edit_yanzheng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/edit_bg"
+            android:hint="@string/forget_phone_yanzhengma_hint"
+            android:padding="10dp"
+            android:textColor="@color/gray"
+            android:textCursorDrawable="@null"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/phone_yanzheng"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/img_code"
+            android:text="@string/regist_yanzhengma"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:id="@+id/phone_check_yanzheng"
+        android:layout_marginLeft="20dp" />
+
+
+        <EditText
+            android:id="@+id/phone_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_bg"
+            android:hint="请输入密码"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/gray"
+            android:textCursorDrawable="@null" />
+
+
+
+    <TextView
+        android:id="@+id/phone_check_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60px"
+        android:textColor="@color/red" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30px" >
+
+        <CheckBox
+            android:id="@+id/pact_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20px"
+            android:background="@drawable/selector_check"
+            android:button="@null"
+            android:checked="true" />
+        <TextView
+            android:id="@+id/pact_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="我已阅读并同意《央视网网络服务使用协议》"
+            android:textColor="@color/colorPrimaryDark" />
+    </LinearLayout>
+    <Button
+        android:layout_margin="20dp"
+        android:id="@+id/phone_register"
+        android:background="@drawable/img_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        android:textColor="@color/white"/>
+</LinearLayout>

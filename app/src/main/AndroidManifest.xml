@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.newpandas">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:name=".app.App"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.myself.MineActivity"></activity>
+        <activity android:name=".ui.myself.LoginActivity"></activity>
+        <activity android:name=".ui.myself.RegisterActivity"></activity>
+        <activity android:name=".ui.myself.ForgetPwdActivity"></activity>
+        <activity android:name=".ui.myself.SettingActivity"></activity>
+        <activity android:name=".ui.myself.AboutActivity"></activity>
+        <activity android:name=".ui.myself.HistroyActivity"></activity>
+        <activity android:name=".ui.myself.CollectionActivity"></activity>
+        <activity android:name=".ui.myself.FeedbackActivity"></activity>
+        <activity android:name=".ui.pandaculture.CarouselWebViewActivity" />
+        <activity android:name=".ui.pandaculture.PandaCultureVideoActivity"></activity>
+        <activity android:name=".activity.hudong.HuDongActivity"></activity>
+        <activity android:name=".activity.hudong.HuDongWebviewActivity"></activity>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="597e16e32ae85b6ac2000395" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="cd2f93faf481a58205d9ce443f77c98b"></meta-data>
+    </application>
+
+</manifest>

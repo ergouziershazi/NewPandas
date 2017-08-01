@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageButton
+            android:id="@+id/about_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/personal_back_img" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="关于熊猫频道"
+            android:textColor="@color/white"
+            android:textSize="23sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/about_sign"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/about_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="熊猫频道V1.4.0" />
+
+    <TextView
+        android:id="@+id/about_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="5dp"
+        android:lineSpacingMultiplier="1"
+        android:padding="10dp"
+        android:text="熊猫频道以24小时直播中国名山大川、自然风光以及熊猫、金丝猴等世界珍稀动物为特色，以CCTV电视节目资源为基础，旨在打造一个传播中国声音、讲好中国故事、展示中国文化独特魅力的中国频道，充分满足海外华人以及喜爱中国文化的外国人的需求，最终建成以视频为特色的中国互联网大百科。现阶段主要开设有《熊猫观察》、《熊猫直播》、《直播中国》、《熊猫文化》等特色栏目。" />
+
+</LinearLayout>

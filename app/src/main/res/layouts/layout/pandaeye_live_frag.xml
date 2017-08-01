@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <ImageView
+            android:scaleType="fitXY"
+            android:id="@+id/pandaLive_pandaFirst"
+
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+        <ImageView
+            android:src="@drawable/ic_play_arrow_white"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/panda_live_mainTitle"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:text="[正在直播] 成都基地高清精切线路"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/pandaLive_showIntroduction"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="简介"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/pandaLive_detailDown"
+            android:src="@drawable/live_china_detail_down"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/pandaLive_detailUp"
+            android:src="@drawable/live_china_detail_up"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/live_main_stick"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+
+            <View
+                android:background="#afe9c7"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/panda_live_showLinear"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="aa"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/pandaLive_introduction"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:layout_marginTop="12dp"
+                    android:id="@+id/pandaLive_introductionDV"
+                    android:background="#e4ebf1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="#e4ebf1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/pandaLive_bookMark_tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    app:tabSelectedTextColor="#21559c"
+                     app:tabIndicatorColor="#21559c"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    ></android.support.design.widget.TabLayout>
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pandaLive_mainPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    ></android.support.v4.view.ViewPager>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">NewPandas</string>
+    <string name="mine_name">个人中心</string>
+    <string name="Login">登录</string>
+    <string name="register">注册</string>
+    <string name="login_weinxin">微信</string>
+    <string name="login_qq">QQ</string>
+    <string name="login_sina">微博</string>
+    <string name="login_tips">使用社交账号登录到熊猫频道</string>
+    <string name="login_cntv">CNTV通行证</string>
+
+    <!--忘记密码-->
+    <string name="forget_pasword">忘记密码</string>
+    <string name="forget_found_pswd">找回密码</string>
+    <string name="forget_tips">只支持手机号注册用户找回密码</string>
+    <string name="forget_account_hint">请输入注册时的手机号</string>
+    <string name="forget_img_yanzhengma_hint">请输入图片验证码</string>
+    <string name="forget_phone_yanzhengma_hint">请输入收到的验证码</string>
+    <string name="forget_set_newpaswd_hint">请设置新密码</string>
+    <string name="forget_image_yanzhengma">图形验证码</string>
+    <string name="regist_yanzhengma">获取验证码</string>
+</resources>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_panda_culture_video"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.newpandas.ui.pandaculture.PandaCultureVideoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#5982e1">
+                <ImageView
+                    android:id="@+id/pandaculturevideo_finish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chevron_left_white_36dp"
+                    android:layout_centerVertical="true"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="熊猫频道《原创戏曲动画》"
+                    android:layout_centerInParent="true"
+                    android:textColor="#ffffff"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp">
+                <!--<com.example.pandas.config.JCVideoPlayerStandard-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="190dp"-->
+                    <!--android:id="@+id/pandaculturevideo_play"-->
+                    <!--&gt;-->
+
+                <!--</com.example.pandas.config.JCVideoPlayerStandard>-->
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#ffffff"
+                >
+                <TextView
+                    android:id="@+id/rollvideo_time_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="首播时间："
+                    android:textSize="19sp"
+                    android:textColor="#1e1e1e"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="栏目介绍"
+                    android:textSize="15sp"
+                    android:textColor="#4e4646"
+                    android:layout_margin="5dp"
+                    android:layout_below="@id/rollvideo_time_text"
+                    android:id="@+id/rollvideo_jieshao_text"
+                    />
+                <ImageView
+                    android:id="@+id/pandaculturevideo_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/lpanda_off"
+                    android:layout_centerInParent="true"
+                    android:layout_below="@id/rollvideo_time_text"
+                    android:layout_marginTop="10dp" />
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/visibility_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:visibility="gone"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/pandaculturevideo_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:layout_margin="10dp"
+                    android:textColor="#000000"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="7.5dp"
+                android:layout_marginLeft="7.5dp"
+                android:layout_marginRight="7.5dp"
+                android:background="#ffffff"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="高清完整"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:textColor="#262525"
+                    android:layout_marginLeft="5dp"
+                    />
+
+            </LinearLayout>
+            <com.jcodecraeer.xrecyclerview.XRecyclerView
+                android:id="@+id/pandaculturevideo_list"
+                android:layout_width="fill_parent"
+                android:layout_height="170dp"
+                android:layout_marginLeft="5.5dp"
+                android:layout_marginRight="5.5dp"
+                android:layout_marginBottom="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#ffffff"
+                android:orientation="horizontal"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="7.5dp"
+                >
+
+                <ImageView
+                    android:id="@+id/pandaculturevideo_collect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/collect_no"
+                    android:layout_marginLeft="120dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/pandaculturevideo_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/share"
+                    android:layout_marginLeft="30dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

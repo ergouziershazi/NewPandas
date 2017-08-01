@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginTop="3dp"
+        android:background="@color/white"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_margin="10dp"
+            android:layout_width="120dp"
+            android:layout_height="80dp">
+            <ImageView
+                android:scaleType="fitXY"
+                android:id="@+id/pandaLive_itemImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:background="@drawable/lpanda_bottom_gra"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="80dp"
+                android:layout_height="20dp">
+
+                <ImageView
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:text="00:00:38"
+                    android:id="@+id/pandaLive_itemLongTime"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:text="《精彩一刻》"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:id="@+id/pandaLive_itemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_alignParentBottom="true"
+                android:text="2017-07-13"
+                android:id="@+id/pandaLive_itemTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

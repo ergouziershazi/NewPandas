@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageButton
+            android:id="@+id/forget_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/personal_back_img" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="@string/forget_pasword"
+            android:textColor="@color/white"
+            android:textSize="23sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:text="@string/forget_tips"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/forget_edit_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/edit_bg"
+        android:hint="@string/forget_account_hint"
+        android:padding="10dp"
+        android:textColor="@color/gray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:id="@+id/forget_check_phone"
+        android:layout_marginLeft="20dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <EditText
+            android:id="@+id/forget_edit_imgcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/forget_imgcode"
+            android:background="@drawable/edit_bg"
+            android:hint="@string/forget_img_yanzhengma_hint"
+            android:padding="10dp"
+            android:textColor="@color/gray"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/forget_imgcode"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/forget_image_yanzhengma" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:id="@+id/forget_check_imgcode"
+        android:layout_marginLeft="20dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        >
+
+        <EditText
+            android:id="@+id/forget_edit_yanzheng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/forget_yanzheng"
+            android:background="@drawable/edit_bg"
+            android:hint="@string/forget_phone_yanzhengma_hint"
+            android:padding="10dp"
+            android:textColor="@color/gray"
+            android:textCursorDrawable="@null"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/forget_yanzheng"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/img_code"
+            android:gravity="center"
+            android:text="@string/regist_yanzhengma"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:id="@+id/forget_check_yanzheng"
+        android:layout_marginLeft="20dp" />
+
+    <EditText
+        android:id="@+id/forget_edit_newpwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_bg"
+        android:hint="@string/forget_set_newpaswd_hint"
+        android:padding="10dp"
+        android:password="true"
+        android:textColor="@color/gray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:id="@+id/forget_check_newpwd"
+        android:layout_marginLeft="20dp" />
+
+    <Button
+        android:id="@+id/Retrieve_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/img_code"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/forget_found_pswd"
+        android:textColor="@color/white" />
+</LinearLayout>

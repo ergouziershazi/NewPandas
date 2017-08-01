@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/watchChat_edit"
+            android:background="#afa9a9"
+            android:hint="添加评论. . ."
+            android:layout_marginLeft="5dp"
+            android:layout_width="240dp"
+            android:layout_height="35dp" />
+        <Button
+            android:id="@+id/watchChat_send"
+            android:text="发送"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="#3192ca"
+            android:layout_width="90dp"
+            android:layout_height="35dp" />
+    </RelativeLayout>
+ <com.jcodecraeer.xrecyclerview.XRecyclerView
+     android:id="@+id/watch_chat_recyler"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"></com.jcodecraeer.xrecyclerview.XRecyclerView>
+</LinearLayout>
