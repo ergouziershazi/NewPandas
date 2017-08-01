@@ -36,4 +36,10 @@ public class Urls {
     public static final String PANDAVOD = "http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do";
     //    熊猫直播 多视角直播
     public static final String PANDALIVEMULTI = BASEURL+"PAGE14501769230331752/PAGE14501787896813312/index.json";
+
+    //登录
+    public static String FORM = "https://reg.cntv.cn/login/login.action";
+
+    //获取昵称
+    public static String GETNiCkNAME="http://my.cntv.cn/intf/napi/api.php";
 }

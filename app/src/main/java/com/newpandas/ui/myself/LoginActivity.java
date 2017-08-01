@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import com.newpandas.R;
 import com.newpandas.base.BaseActivity;
+import com.newpandas.ui.myself.login.LoginContract;
+import com.newpandas.ui.myself.login.LoginPresenter;
+import com.newpandas.widget.manager.ToastManager;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
@@ -25,7 +28,7 @@ import butterknife.OnClick;
  * 温宇航123
  */
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements LoginContract.view{
     @BindView(R.id.login_back)
     ImageButton loginBack;
     @BindView(R.id.login_register)
@@ -50,6 +53,7 @@ public class LoginActivity extends BaseActivity {
     TextView forgetPwd;
     @BindView(R.id.login)
     Button login;
+    private LoginContract.presenter presenter;
 
     @Override
     protected int getLayoutId() {
@@ -58,6 +62,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void init() {
+        new LoginPresenter(this);
     }
 
 
@@ -141,6 +146,7 @@ public class LoginActivity extends BaseActivity {
                 startActivity(new Intent(this, ForgetPwdActivity.class));
                 break;
             case R.id.login:
+                presenter.login(loginEmail.getText().toString().trim(),loginPwd.getText().toString().trim());
                 break;
         }
     }
@@ -172,6 +178,39 @@ public class LoginActivity extends BaseActivity {
 
         }
     };
+
+
+
+    @Override
+    public void showLoginBean(String jsonID, String userID) {
+        presenter.getNickname(jsonID,userID);
+    }
+
+    @Override
+    public void toSuccess() {
+
+    }
+
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void dimissProgress() {
+
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        ToastManager.showToast(msg);
+    }
+
+    @Override
+    public void setPresenter(LoginContract.presenter presenter) {
+        this.presenter=presenter;
+    }
 
     public void onResume() {
         super.onResume();
