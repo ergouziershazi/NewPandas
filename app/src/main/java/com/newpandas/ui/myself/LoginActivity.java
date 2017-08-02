@@ -59,6 +59,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
     Button login;
     private LoginContract.presenter presenter;
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login;
@@ -240,4 +241,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
         MobclickAgent.onPageEnd("SplashScreen"); // （仅有Activity的应用中SDK自动调用，不需要单独写）保证 onPageEnd 在onPause 之前调用,因为 onPause 中会保存信息。"SplashScreen"为页面名称，可自定义
         MobclickAgent.onPause(this);
     }
+
+
 }

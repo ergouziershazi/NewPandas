@@ -46,7 +46,7 @@ public class LoginPresenter implements LoginContract.presenter{
             @Override
             public void onSuccess(String jsonid, LoginBean loginBean) {
                 String user_seq_id = loginBean.getUser_seq_id();
-                loginview.toSuccess();
+                loginview.showLoginBean(jsonid,user_seq_id);
             }
 
             @Override
