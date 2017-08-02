@@ -16,6 +16,8 @@ import com.newpandas.model.entity.CultureVideo;
 import com.newpandas.model.entity.PandaCulture;
 import com.newpandas.uitls.MyLogs;
 import com.newpandas.uitls.acache.ACacheUtils;
+import com.newpandas.widget.manager.JCPlayVideo;
+import com.newpandas.widget.view.CustomDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
@@ -60,7 +62,7 @@ public class PandaCultureFragment extends BaseFragment implements PandaCultureCo
         cultureXrecyclerview.setLoadingMoreEnabled(false);
         cultureXrecyclerview.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         cultureXrecyclerview.setArrowImageView(R.drawable.xlistview_arrow);
-        cultureAdapter = new PandaCultureAdapter(getActivity(),R.layout.pandaculture_item,dataList);
+        cultureAdapter = new PandaCultureAdapter(dataList,getActivity());
         cultureXrecyclerview.setAdapter(cultureAdapter);
     }
 
@@ -73,13 +75,13 @@ public class PandaCultureFragment extends BaseFragment implements PandaCultureCo
         cultureAdapter.setClickListener(new PandaCultureAdapter.onClickListener() {
             @Override
             public void onItemClickListener(int position) {
-                pos = position-4;
-                if(dataList.get(pos).getType().equals("2")){
+                pos = position;
+                if(position==0){
                     Intent intent=new Intent(getActivity(),PandaCultureVideoActivity.class);
-                    intent.putExtra("videoId",dataList.get(pos).getId());
+                    intent.putExtra("videoId",dataList.get(position).getId());
                     startActivity(intent);
                 }else{
-                    presenter.getCultureVideo(dataList.get(pos).getId());
+                    presenter.getCultureVideo(dataList.get(position).getId());
                 }
             }
         });
@@ -127,17 +129,19 @@ public class PandaCultureFragment extends BaseFragment implements PandaCultureCo
                 dataList.get(pos).getVideoLength(),dataList.get(pos).getTitle(),
                 date,videoInfo.getVideo().getChapters().get(0).getUrl(),
                 videoInfo.getVideo().getLowChapters().get(0).getUrl());
-//        videoInfo.getVideo().getChapters().get(0).getUrl();
+        JCPlayVideo.startFullscreen(getActivity(),JCPlayVideo.class,
+                videoInfo.getVideo().getChapters().get(0).getUrl(),
+                dataList.get(pos).getTitle());
     }
 
     @Override
     public void showProgress() {
-
+        CustomDialog.show(getActivity());
     }
 
     @Override
     public void dimissProgress() {
-
+        CustomDialog.dimiss();
     }
 
     @Override

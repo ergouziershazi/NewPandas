@@ -23,10 +23,12 @@ public class PandaCulturePresenter implements PandaCultureContract.Presenter {
 
     @Override
     public void start() {
+        view.showProgress();
         pandaCulturModel.getPandaCultureData(new NetWorkCallBack<PandaCulture>() {
             @Override
             public void onSuccess(PandaCulture pandaCulture) {
                 view.setResult(pandaCulture);
+                view.dimissProgress();
             }
 
             @Override
@@ -46,7 +48,7 @@ public class PandaCulturePresenter implements PandaCultureContract.Presenter {
 
             @Override
             public void onError(int errorCode, String errorMsg) {
-
+                view.showMessage(errorMsg);
             }
         });
 

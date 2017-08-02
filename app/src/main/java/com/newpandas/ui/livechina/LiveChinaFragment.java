@@ -20,6 +20,7 @@ import com.newpandas.base.BaseFragment;
 import com.newpandas.model.entity.LiveChina;
 import com.newpandas.model.entity.LiveInfo;
 import com.newpandas.widget.manager.ToastManager;
+import com.newpandas.widget.view.CustomDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -221,12 +222,12 @@ public class LiveChinaFragment extends BaseFragment implements LiveChinaContract
 
     @Override
     public void showProgress() {
-
+        CustomDialog.show(getActivity());
     }
 
     @Override
     public void dimissProgress() {
-
+        CustomDialog.dimiss();
     }
 
     @Override

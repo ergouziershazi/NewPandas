@@ -23,10 +23,12 @@ public class LiveChinaPresenter implements LiveChinaContract.Presenter {
 
     @Override
     public void start() {
+        view.showProgress();
         liveChinaModel.getLiveChinaData(new NetWorkCallBack<LiveChina>() {
             @Override
             public void onSuccess(LiveChina liveChina) {
                 view.setResult(liveChina);
+                view.dimissProgress();
             }
 
             @Override

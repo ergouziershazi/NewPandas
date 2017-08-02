@@ -15,6 +15,6 @@ public interface CultureVideoContract {
     }
 
     interface Presenter extends BasePresenter{
-
+        void playVideo(String vsid);
     }
 }
