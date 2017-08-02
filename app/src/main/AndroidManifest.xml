@@ -20,7 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.myself.MineActivity"></activity>
-        <activity android:name=".ui.myself.LoginActivity"></activity>
+        <activity android:name=".ui.myself.LoginActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            ></activity>
         <activity android:name=".ui.myself.RegisterActivity"></activity>
         <activity android:name=".ui.myself.ForgetPwdActivity"></activity>
         <activity android:name=".ui.myself.SettingActivity"></activity>

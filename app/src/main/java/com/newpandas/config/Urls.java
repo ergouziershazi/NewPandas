@@ -51,4 +51,7 @@ public class Urls {
 
     //手机号注册
     public static String PHONEREGISTER="https://reg.cntv.cn/regist/mobileRegist.do";
+    //版本更新
+    public static final String VERSION="http://115.182.9.124/index.php?action=release-GetNewVersions&applyName=1426217325";
+
 }

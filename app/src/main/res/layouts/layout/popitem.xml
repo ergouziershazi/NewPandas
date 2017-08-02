@@ -28,6 +28,5 @@
             android:gravity="center"
             android:text="高清"
             />
-
     </RadioGroup>
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.newpandas.R;
 import com.newpandas.base.BaseFragment;
@@ -246,6 +247,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.view {
 //        SqlUtils.getInstance()
 //                .add(0,list.get(0).getBigImg().get(pos).getImage(),buffer.toString(),list.get(0).getBigImg().get(pos).getTitle(),date,videoList.get(0).getUrl());
 //        startActivity(intent);
+//        JCPlayVideo.startFullscreen(this,JCPlayVideo.class,"http://video.jiecao.fm/11/23/xin/%E5%81%87%E4%BA%BA.mp4","温大少");
         ACacheUtils.getUtils().setStorage(videoList.get(0).getUrl(),duration,bigimalist.get(pos).getTitle(),date,videoList.get(0).getUrl(),null);
         videoList.clear();
     }
