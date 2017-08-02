@@ -12,9 +12,14 @@ import com.newpandas.app.App;
 public class SharedPreferencesManager {
    public static SharedPreferences sharedPreferences=  App.context.getSharedPreferences("user", Context.MODE_PRIVATE);
    private static SharedPreferences.Editor editor=sharedPreferences.edit();
-   public static void saveUserInfor(String userName,String userIcon){
+   public static void saveUserInfor(String userName,String userIcon,boolean bol){
        editor.putString("userName",userName);
        editor.putString("userIcon",userIcon);
+       editor.putBoolean("state",bol);
        editor.commit();
    }
+    public static void deleteUserInfor(){
+        editor.clear();
+        editor.commit();
+    }
 }

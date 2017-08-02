@@ -1,6 +1,8 @@
 package com.newpandas.ui.myself;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +15,7 @@ import com.newpandas.base.BaseActivity;
 import com.newpandas.ui.myself.login.LoginContract;
 import com.newpandas.ui.myself.login.LoginPresenter;
 import com.newpandas.widget.manager.JCPlayVideo;
+import com.newpandas.widget.manager.SharedPreferencesManager;
 import com.newpandas.widget.manager.ToastManager;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.UMAuthListener;
@@ -64,6 +67,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
     @Override
     protected void init() {
         new LoginPresenter(this);
+        SharedPreferences spf = SharedPreferencesManager.sharedPreferences;
+        if(spf.getBoolean("state",false)){
+            startActivity(new Intent(this,PersonalActivity.class));
+            finish();
+        }
     }
 
 
@@ -167,7 +175,14 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
 
         @Override
         public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
-
+            ToastManager.showToast("登录成功");
+            String iconurl = map.get("iconurl");
+            String name = map.get("name");
+            Log.e("TAG", iconurl);
+            Log.e("TAG", name);
+            SharedPreferencesManager.saveUserInfor(name,iconurl,true);
+            startActivity(new Intent(LoginActivity.this,PersonalActivity.class));
+            finish();
         }
 
         @Override

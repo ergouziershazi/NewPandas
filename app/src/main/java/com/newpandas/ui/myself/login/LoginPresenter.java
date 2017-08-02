@@ -1,5 +1,7 @@
 package com.newpandas.ui.myself.login;
 
+import android.util.Log;
+
 import com.newpandas.config.Urls;
 import com.newpandas.model.biz.LoginModel;
 import com.newpandas.model.biz.LoginModelImp;
@@ -7,7 +9,6 @@ import com.newpandas.model.entity.LoginBean;
 import com.newpandas.model.entity.NickNameBean;
 import com.newpandas.net.callback.NetCallBack;
 import com.newpandas.net.callback.NetWorkCallBack;
-import com.newpandas.uitls.MyLogs;
 import com.newpandas.widget.manager.SharedPreferencesManager;
 
 import java.net.URLEncoder;
@@ -77,8 +78,8 @@ public class LoginPresenter implements LoginContract.presenter{
         loginModel.getNickNameBean(params, headers, new NetWorkCallBack<NickNameBean>() {
             @Override
             public void onSuccess(NickNameBean nickNameBean) {
-                SharedPreferencesManager.saveUserInfor(nickNameBean.getContent().getNickname(),"");
-                MyLogs.d("SSS","--------------"+nickNameBean.getContent().getNickname());
+                SharedPreferencesManager.saveUserInfor(nickNameBean.getContent().getNickname(),"",true);
+                Log.d("LoginPresenter", "--------------" + nickNameBean.getCode());
                 loginview.toSuccess();
             }
 

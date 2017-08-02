@@ -27,6 +27,7 @@ public class PandabroadcastPresenter implements PandabroadCastContract.persenter
             @Override
             public void onSuccess(PandaBroadcastListBean pandaBroadcastListBean) {
                 pdcview.showListBean(pandaBroadcastListBean);
+                pdcview.dimissProgress();
             }
 
             @Override
@@ -53,6 +54,7 @@ public class PandabroadcastPresenter implements PandabroadCastContract.persenter
 
     @Override
     public void start() {
+        pdcview.showProgress();
         pbcmodel.getPandabroadcastBean(new NetWorkCallBack<PandabroadcastBean>() {
             @Override
             public void onSuccess(PandabroadcastBean pandabroadcastBean) {

@@ -13,6 +13,7 @@ import com.newpandas.model.entity.PandaBroadcastListBean;
 import com.newpandas.model.entity.PandabroadcastBean;
 import com.newpandas.net.HttpFactory;
 import com.newpandas.widget.manager.ToastManager;
+import com.newpandas.widget.view.CustomDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -115,12 +116,12 @@ public class PandaBroadCastFragment extends BaseFragment implements PandabroadCa
 
     @Override
     public void showProgress() {
-
+        CustomDialog.show(getActivity());
     }
 
     @Override
     public void dimissProgress() {
-
+        CustomDialog.dimiss();
     }
 
     @Override

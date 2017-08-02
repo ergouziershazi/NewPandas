@@ -1,14 +1,18 @@
 package com.newpandas.ui.myself;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.newpandas.R;
 import com.newpandas.base.BaseActivity;
+import com.newpandas.uitls.MyLogs;
+import com.newpandas.widget.manager.SharedPreferencesManager;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -24,8 +28,8 @@ public class MineActivity extends BaseActivity {
     TextView titleTv;
     @BindView(R.id.image1)
     ImageView image1;
-    @BindView(R.id.title)
-    TextView title;
+    @BindView(R.id.title_name)
+    TextView titleName;
     @BindView(R.id.mine_login)
     LinearLayout mineLogin;
     @BindView(R.id.mine_history)
@@ -45,6 +49,20 @@ public class MineActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences spf = SharedPreferencesManager.sharedPreferences;
+        String userName = spf.getString("userName", "点击登录");
+        String userIcon = spf.getString("userIcon", "");
+        MyLogs.d("TGA", userName + "-----------" + userIcon);
+        titleName.setText(userName);
+        if (!userIcon.equals("")) {
+            Glide.with(this).load(userIcon).into(image1);
+        } else {
+            image1.setImageResource(R.drawable.personal_login_head);
+        }
+    }
 
     @OnClick({R.id.mine_back, R.id.mine_login, R.id.mine_history, R.id.mine_collection, R.id.mine_setting})
     public void onViewClicked(View view) {
@@ -65,5 +83,6 @@ public class MineActivity extends BaseActivity {
                 startActivity(new Intent(this,SettingActivity.class));
                 break;
         }
+
     }
 }

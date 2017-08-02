@@ -46,7 +46,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/personal_login_head"/>
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/title_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="点击登录"
