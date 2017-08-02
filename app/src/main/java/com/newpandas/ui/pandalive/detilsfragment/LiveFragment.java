@@ -3,9 +3,11 @@ package com.newpandas.ui.pandalive.detilsfragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -27,7 +29,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by yan on 2017/7/31.
@@ -59,21 +60,49 @@ public class LiveFragment extends BaseFragment implements PandaEyeContract.view 
     ScrollView liveMainStick;
     PandaEyeContract.persenter persenter;
     PandaEyePresenter pandaEyePresenter;
-    Unbinder unbinder2;
     private int singleEven = 1;
     private ArrayList<Fragment> mainLiveFragments;
     private MainLiveAdapter adapter;
     private boolean flg = false;
     private ArrayList<String> list;
+    private boolean sureFirst = false;
     BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String image_url = intent.getStringExtra("image_url");
             String url = intent.getStringExtra("url");
-
         }
     };
+    private AlertDialog.Builder builder;
 
+//    Handler hand = new Handler(){
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            if(msg.what == 1000) {
+//                builder = new AlertDialog.Builder(getActivity());
+//                builder.setMessage("您正在使用移动数据网络，所产生的流量费用由当地运营商收取，是否继续?")
+//                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.cancel();
+//                            }
+//                        })
+//                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.cancel();
+//                            }
+//                        }) ;
+//                builder.create();
+//                builder.show();
+//            }else if(msg.what == 2000) {
+////                LogUtils.setLog("PLMF",list.size()+"::"+mainLiveFragments.size());
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//        }
+//    };
     @Override
     protected int getLayoutId() {
         return R.layout.pandaeye_live_frag;
@@ -82,9 +111,11 @@ public class LiveFragment extends BaseFragment implements PandaEyeContract.view 
     @Override
     protected void init(View view) {
         pandaEyePresenter = new PandaEyePresenter(this);
-        pandaEyePresenter.start();
         mainLiveFragments = new ArrayList<>();
         list = new ArrayList<>();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("com.sending_url");
+        getActivity().registerReceiver(receiver,filter);
     }
 
     @Override
@@ -111,7 +142,7 @@ public class LiveFragment extends BaseFragment implements PandaEyeContract.view 
                         pandaLiveShowIntroduction.requestFocus();
                     } else {
                         layoutParams.height = 600;
-                        //          把上面的tablayout设为焦点 防止 直接显示第一条
+                        // 把上面的tablayout设为焦点 防止 直接显示第一条
                         pandaLiveBookMarkTab.setFocusable(true);
                         pandaLiveBookMarkTab.setFocusableInTouchMode(true);
                         pandaLiveBookMarkTab.requestFocus();
@@ -147,7 +178,24 @@ public class LiveFragment extends BaseFragment implements PandaEyeContract.view 
             }
         });
     }
-
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        if(isVisibleToUser){
+//            if(sureFirst == false) {
+//                hand.sendEmptyMessage(1000);
+//                sureFirst = true;
+//            }else {
+//                Intent intent = new Intent();
+//                intent.setAction("can.refresh");
+//                intent.putExtra("refresh",true);
+//                getActivity().sendBroadcast(intent);
+//                hand.sendEmptyMessage(2000);
+//            }
+//            Log.i("abc","pandaLiveMainFragment==="+this);
+//
+//        }
+//    }
 
     @Override
     public void showTabTitles(PandaEyeTabBean pandaEyeTabBean) {
@@ -164,18 +212,13 @@ public class LiveFragment extends BaseFragment implements PandaEyeContract.view 
         Glide.with(getActivity()).load(bean.getLive().get(0).getImage()).into(pandaLivePandaFirst);
         pandaLiveMainTitle.setText(bean.getLive().get(0).getTitle());
         pandaLiveIntroduction.setText(bean.getLive().get(0).getBrief());
-
         MultiAngleFragment multiAngleFragment = new MultiAngleFragment();
         new PandaEyePresenter(multiAngleFragment);
-
         WatchChatFragment watchChatFragment = new WatchChatFragment();
-
         list.add(bean.getBookmark().getMultiple().get(0).getTitle());
         list.add(bean.getBookmark().getWatchTalk().get(0).getTitle());
-
         mainLiveFragments.add(multiAngleFragment);
         mainLiveFragments.add(watchChatFragment);
-
         adapter.notifyDataSetChanged();
     }
 

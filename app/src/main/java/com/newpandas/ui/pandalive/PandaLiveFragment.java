@@ -24,7 +24,6 @@ import butterknife.Unbinder;
 /**
  * Created by yan on 2017/7/28.
  */
-
 public class PandaLiveFragment extends BaseFragment implements PandaEyeContract.view {
     List<PandaEyeTabBean.TablistBean> tablistBeen;
     @BindView(R.id.panda_eye_tablayout)
@@ -53,7 +52,6 @@ public class PandaLiveFragment extends BaseFragment implements PandaEyeContract.
         pandaeyeVp.setAdapter(adapter);
         pandaEyeTablayout.setupWithViewPager(pandaeyeVp);
         pandaEyeTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-
     }
 
     @Override

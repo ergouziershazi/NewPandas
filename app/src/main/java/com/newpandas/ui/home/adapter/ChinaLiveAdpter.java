@@ -31,6 +31,7 @@ public class ChinaLiveAdpter extends MyBaseAdapter <PandaHome.DataBean.Chinalive
             @Override
             public void onClick(View v) {
                 Toast.makeText(App.context,"直播中国",Toast.LENGTH_SHORT).show();
+
             }
         });
 

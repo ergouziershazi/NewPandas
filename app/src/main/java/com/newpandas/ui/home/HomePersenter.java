@@ -6,6 +6,7 @@ import com.newpandas.model.entity.CcTvForBean;
 import com.newpandas.model.entity.LightChinaBean;
 import com.newpandas.model.entity.PandaEyeBean;
 import com.newpandas.model.entity.PandaHome;
+import com.newpandas.model.entity.VideoInfoBean;
 import com.newpandas.net.callback.NetWorkCallBack;
 
 /**
@@ -82,6 +83,61 @@ public class HomePersenter implements HomeContract.persenter {
               homeview.showMessage(errorMsg);
             }
         });
+    }
+
+    @Override
+    public void rotationResult(String id) {
+        pandaHomeModel.getRotationBean(id, new NetWorkCallBack<VideoInfoBean>() {
+            @Override
+            public void onSuccess(VideoInfoBean videoInfoBean) {
+                homeview.setRotationResult(videoInfoBean);
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+              homeview.showMessage(errorMsg);
+            }
+        });
+    }
+
+    @Override
+    public void wonderfulResult(String id) {
+     pandaHomeModel.getWonderfulBean(id, new NetWorkCallBack<VideoInfoBean>() {
+         @Override
+         public void onSuccess(VideoInfoBean videoInfoBean) {
+             homeview.setWonderfulResult(videoInfoBean);
+         }
+
+         @Override
+         public void onError(int errorCode, String errorMsg) {
+           homeview.showMessage(errorMsg);
+         }
+     });
+    }
+
+    @Override
+    public void itemResult(String id) {
+     pandaHomeModel.getItemBean(id, new NetWorkCallBack<VideoInfoBean>() {
+         @Override
+         public void onSuccess(VideoInfoBean videoInfoBean) {
+             homeview.setItemResult(videoInfoBean);
+         }
+
+         @Override
+         public void onError(int errorCode, String errorMsg) {
+            homeview.showMessage(errorMsg);
+         }
+     });
+    }
+
+    @Override
+    public void pandaWatchResult(String id) {
+
+    }
+
+    @Override
+    public void lightChinaVideoInfo(String id) {
+
     }
 
 

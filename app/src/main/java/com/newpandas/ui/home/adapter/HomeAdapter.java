@@ -40,6 +40,8 @@ public class HomeAdapter extends RecyclerView.Adapter{
     private List<CcTvForBean.ListBean> cctvlist;
     private List<LightChinaBean.ListBean> lightlist;
     private List<PandaEyeBean.ListBean> pandaeyelist;
+    private itemClickListener clickListener;
+
     public HomeAdapter(Context context, List<Object> datas, List<CcTvForBean.ListBean> cctvlist, List<LightChinaBean.ListBean> lightlist, List<PandaEyeBean.ListBean> pandaeyelist){
         this.context=context;
         this.datas=datas;
@@ -168,7 +170,14 @@ public class HomeAdapter extends RecyclerView.Adapter{
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(new HomeAreaAdapter(context,R.layout.home_area_item,areas));
+        HomeAreaAdapter homeAdapter=new HomeAreaAdapter(context,R.layout.home_area_item,areas);
+        recyclerView.setAdapter(homeAdapter);
+        homeAdapter.setClickListener(new HomeAreaAdapter.itemClickListener() {
+            @Override
+            public void onItemClickListener(int position) {
+             clickListener.onWonderfulreItemClickListener(position);
+            }
+        });
     }
   private void loadPandaEye(PandaEyeHolder holder,PandaHome.DataBean.PandaeyeBean pandaeyeBean){
         holder.title.setText(pandaeyeBean.getTitle());
@@ -179,7 +188,18 @@ public class HomeAdapter extends RecyclerView.Adapter{
       manager.setOrientation(LinearLayoutManager.VERTICAL);
       RecyclerView recyclerView=holder.recyclerView;
       recyclerView.setLayoutManager(manager);
-      recyclerView.setAdapter(new PandaeyeTopAdapter(context,R.layout.home_pandaeye_top_item,items));
+      PandaeyeTopAdapter pandaeyeTopAdapter=new PandaeyeTopAdapter(context,R.layout.home_pandaeye_top_item,items);
+      recyclerView.setAdapter(pandaeyeTopAdapter);
+      pandaeyeTopAdapter.setClickListener(new PandaeyeTopAdapter.itemClickListener() {
+          @Override
+          public void onItemClickListener(int position) {
+              clickListener.onPandaEyeItemClickListener(position);
+          }
+      });
+
+
+
+
 
   }
     private void loadPandaLive(PandaliveHolder holder,PandaHome.DataBean.PandaliveBean pandaliveBean){
@@ -249,6 +269,7 @@ public class HomeAdapter extends RecyclerView.Adapter{
             super(itemView);
             recyclerView= (RecyclerView) itemView.findViewById(R.id.areaRecyclerView);
             areaIcon = (ImageView) itemView.findViewById(R.id.areaIcon);
+
         }
     }
 //    熊猫观察
@@ -330,6 +351,22 @@ public class HomeAdapter extends RecyclerView.Adapter{
             title= (TextView) itemView.findViewById(R.id.light_live_title);
             recyclerView= (RecyclerView) itemView.findViewById(R.id.light_live_recyclerview);
         }
+    }
+
+    public void setClickListener(itemClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
+
+    public interface itemClickListener{
+        void onCCTVItemClickListener(int position);
+        void onGreatWallLiveItemClickListener(int position);
+        void onLightChinaItemClickListener(int position);
+        void onLiveInChinaItemClickListener(int position);
+        void onPandaEyeItemClickListener(int position);
+        void onPandaLiveItemClickListener(int position);
+        void onPandaWatchItemClickListener(int position);
+        void onWonderfulreItemClickListener(int position);
+        void onSpecialPlanItemClickListener(int position);
     }
 
 }

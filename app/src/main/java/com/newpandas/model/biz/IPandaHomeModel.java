@@ -4,6 +4,7 @@ import com.newpandas.model.entity.CcTvForBean;
 import com.newpandas.model.entity.LightChinaBean;
 import com.newpandas.model.entity.PandaEyeBean;
 import com.newpandas.model.entity.PandaHome;
+import com.newpandas.model.entity.VideoInfoBean;
 import com.newpandas.net.callback.NetWorkCallBack;
 
 /**
@@ -15,4 +16,7 @@ public interface IPandaHomeModel extends BaseModel{
     void loadCcTv(String url,NetWorkCallBack<CcTvForBean> callBack);
     void loadLightChina(String url, NetWorkCallBack<LightChinaBean> callBack);
     void loadPandaEye(String url, NetWorkCallBack<PandaEyeBean> callBack);
+    void getRotationBean(String id,NetWorkCallBack<VideoInfoBean> callbacks);
+    void getWonderfulBean(String id,NetWorkCallBack<VideoInfoBean> callbacks);
+    void getItemBean(String id,NetWorkCallBack<VideoInfoBean> callbacks);
 }

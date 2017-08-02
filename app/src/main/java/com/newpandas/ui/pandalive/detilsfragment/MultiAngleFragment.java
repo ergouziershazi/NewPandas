@@ -1,9 +1,11 @@
 package com.newpandas.ui.pandalive.detilsfragment;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.newpandas.R;
@@ -13,8 +15,9 @@ import com.newpandas.model.entity.pandalive.PandaEyeTabBean;
 import com.newpandas.model.entity.pandalive.SendingBean;
 import com.newpandas.ui.pandalive.PandaEyeContract;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
@@ -27,8 +30,18 @@ public class MultiAngleFragment extends BaseFragment implements PandaEyeContract
     GridView pandaLiveGrid;
     Unbinder unbinder;
     PandaEyeContract.persenter persenter;
+    private MultipleGridAdapter adapter;
+    BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            multipleList.clear();
+            persenter.start();
+            adapter.notifyDataSetChanged();
+//            LogUtils.setLog("Multi",multipleList.size()+"::");
+        }
+    };
 
-
+    private ArrayList<MultipleBean.ListBean> multipleList;
     @Override
     protected int getLayoutId() {
         return R.layout.pandalive_multiple;
@@ -36,12 +49,30 @@ public class MultiAngleFragment extends BaseFragment implements PandaEyeContract
 
     @Override
     protected void init(View view) {
+        multipleList = new ArrayList<>();
 
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("can.refresh");
+        getActivity().registerReceiver(receiver,filter);
+
+        adapter = new MultipleGridAdapter(getActivity(),multipleList);
+        pandaLiveGrid.setAdapter(adapter);
+
+        pandaLiveGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent();
+                intent.setAction("com.sending_url");
+                intent.putExtra("image_url",multipleList.get(position).getImage());
+                intent.putExtra("url",multipleList.get(position).getUrl());
+                getActivity().sendBroadcast(intent);
+            }
+        });
     }
 
     @Override
     protected void loadData() {
-
+        persenter.start();
     }
 
     @Override
@@ -51,7 +82,9 @@ public class MultiAngleFragment extends BaseFragment implements PandaEyeContract
 
     @Override
     public void setMultipleBean(MultipleBean bean) {
+        multipleList.addAll(bean.getList());
 
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -76,20 +109,7 @@ public class MultiAngleFragment extends BaseFragment implements PandaEyeContract
 
     @Override
     public void setPresenter(PandaEyeContract.persenter persenter) {
-
+        this.persenter = persenter;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 }

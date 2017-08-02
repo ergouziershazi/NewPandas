@@ -109,7 +109,8 @@ public class OtherFragment extends BaseFragment implements OtherContract.view,Ot
 
     @Override
     public void palyvideo(PlayBean playBean) {
-
+        chapters = playBean.getVideo().getChapters().get(0).getUrl();
+        lowChapters = playBean.getVideo().getLowChapters().get(0).getUrl();
     }
 
     @Override
