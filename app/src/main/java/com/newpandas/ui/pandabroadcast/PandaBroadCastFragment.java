@@ -11,7 +11,9 @@ import com.newpandas.R;
 import com.newpandas.base.BaseFragment;
 import com.newpandas.model.entity.PandaBroadcastListBean;
 import com.newpandas.model.entity.PandabroadcastBean;
+import com.newpandas.model.entity.PbVideoBean;
 import com.newpandas.net.HttpFactory;
+import com.newpandas.widget.manager.JCPlayVideo;
 import com.newpandas.widget.manager.ToastManager;
 import com.newpandas.widget.view.CustomDialog;
 
@@ -25,7 +27,7 @@ import butterknife.Unbinder;
  * Created by yan on 2017/7/28.
  */
 
-public class PandaBroadCastFragment extends BaseFragment implements PandabroadCastContract.view {
+public class PandaBroadCastFragment extends BaseFragment implements PandabroadCastContract.view ,pandabroadcastAdapter.OnClick{
     @BindView(R.id.pb_xRecyclerview)
     XRecyclerView pbXRecyclerview;
     Unbinder unbinder;
@@ -57,6 +59,7 @@ public class PandaBroadCastFragment extends BaseFragment implements PandabroadCa
         listbean = new ArrayList<PandaBroadcastListBean.ListBean>();
 
         pandabroadcastAdapter = new pandabroadcastAdapter(getActivity(), R.layout.pandaculture_item, listbean);
+        pandabroadcastAdapter.setOnClick(this);
         pbXRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         pbXRecyclerview.setAdapter(pandabroadcastAdapter);
         pbXRecyclerview.setHasFixedSize(true);
@@ -115,6 +118,12 @@ public class PandaBroadCastFragment extends BaseFragment implements PandabroadCa
     }
 
     @Override
+    public void showVideoBean(PbVideoBean pbVideoBean) {
+        String url = pbVideoBean.getVideo().getChapters().get(0).getUrl();
+        JCPlayVideo.startFullscreen(getActivity(),JCPlayVideo.class,url,pbVideoBean.getTitle());
+    }
+
+    @Override
     public void showProgress() {
         CustomDialog.show(getActivity());
     }
@@ -132,5 +141,10 @@ public class PandaBroadCastFragment extends BaseFragment implements PandabroadCa
     @Override
     public void setPresenter(PandabroadCastContract.persenter persenter) {
         this.persenter = persenter;
+    }
+
+    @Override
+    public void onClickListener(String pid) {
+        persenter.loadvideo(pid);
     }
 }

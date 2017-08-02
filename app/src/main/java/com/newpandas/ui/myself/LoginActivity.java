@@ -18,9 +18,13 @@ import com.newpandas.widget.manager.JCPlayVideo;
 import com.newpandas.widget.manager.SharedPreferencesManager;
 import com.newpandas.widget.manager.ToastManager;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMVideo;
 
 import java.util.Map;
 
@@ -32,7 +36,7 @@ import butterknife.OnClick;
  * 温宇航123
  */
 
-public class LoginActivity extends BaseActivity implements LoginContract.view{
+public class LoginActivity extends BaseActivity implements LoginContract.view,JCPlayVideo.OnCollect{
     @BindView(R.id.login_back)
     ImageButton loginBack;
     @BindView(R.id.login_register)
@@ -67,6 +71,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
 
     @Override
     protected void init() {
+        JCPlayVideo.setOnCollect(this);
         new LoginPresenter(this);
         SharedPreferences spf = SharedPreferencesManager.sharedPreferences;
         if(spf.getBoolean("state",false)){
@@ -243,4 +248,76 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
     }
 
 
+
+    @Override
+    public void successful() {
+        ToastManager.showToast("收藏成功");
+//                UMImage image = new UMImage(this, R.mipmap.ic_launcher);//资源文件
+//                UMImage thumb =  new UMImage(this, R.drawable.collect_no);
+//                image.setThumb(thumb);
+//                new ShareAction(this)
+//                        .setPlatform(SHARE_MEDIA.QQ)//传入平台
+//                        .withText("hello")//分享内容
+//                        .withMedia(image)
+//                        .setCallback(new UMShareListener() {
+//                            @Override
+//                            public void onStart(SHARE_MEDIA share_media) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onResult(SHARE_MEDIA share_media) {
+//                                JCPlayVideo.startFullscreen(LoginActivity.this,JCPlayVideo.class,"http://video.jiecao.fm/11/23/xin/%E5%81%87%E4%BA%BA.mp4","温大少");
+//                            }
+//
+//                            @Override
+//                            public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onCancel(SHARE_MEDIA share_media) {
+//
+//                            }
+//                        })//回调监听器
+//                        .share();
+
+    }
+
+    @Override
+    public void filed() {
+        ToastManager.showToast("取消收藏");
+    }
+
+    @Override
+    public void share() {
+        UMImage image = new UMImage(this, R.mipmap.ic_launcher);//资源文件
+        UMImage thumb =  new UMImage(this, R.drawable.collect_no);
+        UMVideo video = new UMVideo("http://video.jiecao.fm/11/23/xin/%E5%81%87%E4%BA%BA.mp4");
+        video.setTitle("This is music title");//视频的标题
+        video.setThumb(thumb);//视频的缩略图
+        video.setDescription("my description");//视频的描述
+        new ShareAction(this).setPlatform(SHARE_MEDIA.QQ).withText("hello").withMedia(video).setCallback(new UMShareListener() {
+                            @Override
+                            public void onStart(SHARE_MEDIA share_media) {
+
+                            }
+
+                            @Override
+                            public void onResult(SHARE_MEDIA share_media) {
+                                JCPlayVideo.startFullscreen(LoginActivity.this,JCPlayVideo.class,"http://video.jiecao.fm/11/23/xin/%E5%81%87%E4%BA%BA.mp4","温大少");
+                            }
+
+                            @Override
+                            public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+
+                            }
+
+                            @Override
+                            public void onCancel(SHARE_MEDIA share_media) {
+
+                            }
+                        }
+        ).share();
+    }
 }

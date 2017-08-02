@@ -4,6 +4,7 @@ import com.newpandas.model.biz.PandaBroadCastModel;
 import com.newpandas.model.biz.PandaBroadCastModelImp;
 import com.newpandas.model.entity.PandaBroadcastListBean;
 import com.newpandas.model.entity.PandabroadcastBean;
+import com.newpandas.model.entity.PbVideoBean;
 import com.newpandas.net.callback.NetWorkCallBack;
 
 /**
@@ -43,6 +44,21 @@ public class PandabroadcastPresenter implements PandabroadCastContract.persenter
             @Override
             public void onSuccess(PandaBroadcastListBean pandaBroadcastListBean) {
                 pdcview.showLoadMoreBean(pandaBroadcastListBean);
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+                pdcview.showMessage(errorMsg);
+            }
+        });
+    }
+
+    @Override
+    public void loadvideo(String url) {
+        pbcmodel.getPbVideoBean(url, new NetWorkCallBack<PbVideoBean>() {
+            @Override
+            public void onSuccess(PbVideoBean pbVideoBean) {
+                pdcview.showVideoBean(pbVideoBean);
             }
 
             @Override

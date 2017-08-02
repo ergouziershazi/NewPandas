@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -26,9 +25,6 @@ import android.widget.Toast;
 
 import com.newpandas.R;
 import com.newpandas.app.App;
-import com.umeng.socialize.ShareAction;
-import com.umeng.socialize.UMShareListener;
-import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -256,28 +252,7 @@ public class JCPlayVideo extends JCVideoPlayer {
         } else if (i == fm.jiecao.jcvideoplayer_lib.R.id.back_tiny) {
             backPress();
         }else if(i == fm.jiecao.jcvideoplayer_lib.R.id.share){
-            Log.d(TAG, "1234");
-            new ShareAction(App.context).setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN,SHARE_MEDIA.FACEBOOK).withText("我能分享了").setCallback(new UMShareListener() {
-                @Override
-                public void onStart(SHARE_MEDIA share_media) {
-                    Log.d(TAG, "开始");
-                }
-
-                @Override
-                public void onResult(SHARE_MEDIA share_media) {
-                    Log.d(TAG, "成功");
-                }
-
-                @Override
-                public void onError(SHARE_MEDIA share_media, Throwable throwable) {
-                    Log.d(TAG, "失败");
-                }
-
-                @Override
-                public void onCancel(SHARE_MEDIA share_media) {
-                    Log.d(TAG, "取消");
-                }
-            }).open();
+                onCollect.share();
         }else if(i == fm.jiecao.jcvideoplayer_lib.R.id.collect){
             if(collect.isChecked()){
                 onCollect.successful();
@@ -299,6 +274,7 @@ public class JCPlayVideo extends JCVideoPlayer {
     public interface OnCollect{
         void successful();
         void filed();
+        void share();
     }
 
 

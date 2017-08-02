@@ -54,4 +54,7 @@ public class Urls {
     //版本更新
     public static final String VERSION="http://115.182.9.124/index.php?action=release-GetNewVersions&applyName=1426217325";
 
+    //熊猫播报视频播放
+    public static final String VIDEOPLAY="http://115.182.35.91/api/getVideoInfoForCBox.do?pid=";
+
 }
